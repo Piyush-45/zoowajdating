@@ -8,6 +8,7 @@ import { Image, TouchableOpacity } from 'react-native';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 import backButton from "../assets/images/backarrow.png";
+import { Customback } from './(tabs)/matches';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -107,6 +108,7 @@ export default function RootLayout() {
             headerLeft: () => <CustomBackButton />
           }}
         />
+        <Stack.Screen name='notificationscreen' options={{headerTitle:'Notification', headerTitleAlign:'center', headerLeft:()=><Customback/>}}/>
         <Stack.Screen name='(tabs)' options={{headerShown:false}}/>
 
       </Stack>

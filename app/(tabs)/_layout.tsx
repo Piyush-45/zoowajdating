@@ -1,37 +1,27 @@
-import { Tabs } from 'expo-router';
 import React from 'react';
+import { Tabs } from 'expo-router';
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+// Ensure SVG files are loaded correctly as strings
+import marriageIcon from '../../assets/images/homeicon.svg';
+import matchesIcon from '../../assets/images/matchesicon.svg';
+import messageIcon from '../../assets/images/messageicon.svg';
+import profileIcon from '../../assets/images/profileicon.svg';
 
+
+import notificationicon from "../../assets/images/notificationicon.png"
+import filtericon  from "../../assets/images/filtericon.png"
+
+
+const _layout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
+    <Tabs>
+     <Tabs.Screen name='home'/>
+     <Tabs.Screen name='matches'/>
+     <Tabs.Screen name='messages'/>
+     <Tabs.Screen name='profile'/>
     </Tabs>
   );
-}
+};
+
+export default _layout;

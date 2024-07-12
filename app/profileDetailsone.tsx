@@ -17,11 +17,11 @@ const ProfileDetailsone = () => {
   const genderOptions = [
     { label: 'Male', icon: 'male', value: 'male' },
     { label: 'Female', icon: 'female', value: 'female' },
-    { label: 'Other', icon: 'transgender', value: 'other' },
+
   ];
 
   const maritalOptions = [
-    'Single', 'Married', 'Divorced', 'Widowed', 'Separated'
+    'Single',  'Divorced', 'Widowed', 'Separated'
   ];
 
   const childrenOptions = [
@@ -81,7 +81,7 @@ const ProfileDetailsone = () => {
 
           {renderSelectInput(maritalStatus, 'Marital Status', () => setShowMaritalModal(true))}
 
-          {renderSelectInput(children, 'Do you have any children?', () => setShowChildrenModal(true))}
+          {/* {renderSelectInput(children, 'Do you have any children?', () => setShowChildrenModal(true))} */}
 
           <TextInput
             placeholder='Tagline'

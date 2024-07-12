@@ -1,12 +1,51 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, ScrollView, Dimensions, SafeAreaView } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const { width, height } = Dimensions.get('window');
-const interests=['Nature', 'Travel', 'Writting']
+
+const interests = [
+  { label: 'Nature', icon: 'nature' },
+  { label: 'Travel', icon: 'flight' },
+  { label: 'Writing', icon: 'create' }
+];
+
+const religiosity = [
+  { label: "Sunni", icon: "brightness-5" },
+  { label: "Halal Only", icon: "restaurant" },
+  { label: "Moderately Practicing", icon: "event" },
+  { label: "Smokes Occasionally", icon: "smoking-rooms" }
+];
+
+const futurePlans = [
+  { label: "Wants Children", icon: "child-care" },
+  { label: "Will not move abroad", icon: "home" }
+];
+
+const languageEth = [
+  { label: "English", icon: "language" },
+  { label: "Pakistani", icon: "flag" },
+  { label: "Grew up in Australia", icon: "place" }
+];
+
 const ProfileDetailScreen = () => {
   const { profile: profileString } = useLocalSearchParams();
   const profile = JSON.parse(profileString);
+
+  const renderButtons = (title, items) => (
+    <View style={styles.sectionContainer}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      <View style={styles.buttonContainer}>
+        {items.map((item, index) => (
+          <View key={index} style={styles.button}>
+            <Icon name={item.icon} size={16} color="#43CEBA" />
+            <Text style={styles.buttonText}>{item.label}</Text>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -22,15 +61,16 @@ const ProfileDetailScreen = () => {
           </View>
           <Text style={styles.nameText}>{profile.name}</Text>
           <Text style={styles.locationText}>{profile.address}</Text>
-          <Text style={{fontSize:24, fontWeight:'600'}}>About</Text>
-          <Text style={{fontSize:14,color:'#B0B0B0'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, officia?</Text>
-          <Text  style={{fontSize:24, fontWeight:'600'}}>Interest</Text>
-          <View style={{marginTop:10, display:'flex', flexDirection:'row', alignItems:'center', }}>
-            {interests.map((item, index) => (
-              <Text key={index} style={styles.tagText}>{item}</Text>
-            ))}
-          </View>
-          {/* Add more profile details here */}
+          
+          <Text style={styles.bioTitle}>About Me</Text>
+          <Text style={styles.bioText}>
+            Hi there! I'm Sarah, a 28-year-old graphic designer with a passion for life and a desire to find a meaningful connection. I love exploring new cafes, hiking on weekends, and curling up with a good book. I'm looking for someone who shares my values, can make me laugh, and is ready for a serious relationship. Family is important to me, and I hope to start my own someday. I'm open-minded, curious about the world, and always eager to try new experiences. If you're kind, ambitious, and enjoy deep conversations, we might just hit it off!
+          </Text>
+
+          {renderButtons("Religiosity", religiosity)}
+          {renderButtons("Future Plans", futurePlans)}
+          {renderButtons("Interests", interests)}
+          {renderButtons("Language and Ethnicity", languageEth)}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -46,7 +86,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imageContainer: {
-    height: height * 0.6, // Adjust this value to control image height
+    height: height * 0.6,
   },
   image: {
     width: '100%',
@@ -57,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    marginTop: -height * 0.1, // This creates the overlap
+    marginTop: -height * 0.1,
     paddingTop: 30,
     paddingHorizontal: 20,
   },
@@ -65,7 +105,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 20,
-    marginTop: -50, // This pulls the icons up onto the image
+    marginTop: -50,
   },
   icon: {
     width: 56,
@@ -76,30 +116,53 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 5,
-    textAlign:'center'
+    textAlign: 'center',
   },
   locationText: {
     fontSize: 16,
     color: '#666',
     marginBottom: 10,
-    textAlign:'center'
+    textAlign: 'center',
   },
-  tagsContainer: {
+  bioTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  bioText: {
+    fontSize: 14,
+    color: '#333',
+    lineHeight: 22,
+    marginBottom: 20,
+  },
+  sectionContainer: {
+    marginBottom: 20,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    marginBottom: 10,
+  },
+  buttonContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 15,
   },
-  tagText: {
-    fontSize: 14,
-    borderWidth:1,
-    borderColor:'#43CEBA',
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#43CEBA',
     paddingHorizontal: 10,
     paddingVertical: 5,
     marginRight: 10,
     marginBottom: 10,
-    // color:'white',
-    borderRadius:10,
-    fontWeight:'semibold'
+    borderRadius: 10,
+  },
+  buttonText: {
+    fontSize: 14,
+    fontWeight: '600',
+    marginLeft: 5,
   },
 });
 

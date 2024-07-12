@@ -9,40 +9,40 @@ const ProfileCard = ({ profile }) => {
 
   const handleProfilePress = () => {
     router.push({
-      pathname: `/profile/${profile.id}`,
+      pathname: `/profiledetail/${profile.id}`,
       params: { profile: JSON.stringify(profile) }
     });
   };
   return (
     <View style={styles.container}>
-        <View style={styles.cardContainer}>
-      <TouchableOpacity onPress={handleProfilePress} >
+      <View style={styles.cardContainer}>
+        <TouchableOpacity onPress={handleProfilePress} >
 
           <Image source={profile.image} style={styles.image} />
-      </TouchableOpacity>
-      <View style={styles.infoContainer}>
-        <View style={styles.textContainer}>
-          <Text style={styles.nameText}>Anita Fritsch, 21</Text>
-          <Text style={styles.locationText}>Cape Town, Afrika</Text>
-          <View style={styles.tagsContainer}>
-            {profile.tags.map((item, index) => (
-              <Text key={index} style={styles.tagText}>{item}</Text>
-            ))}
+        </TouchableOpacity>
+        <View style={styles.infoContainer}>
+          <View style={styles.textContainer}>
+            <Text style={styles.nameText}>Anita Fritsch, 21</Text>
+            <Text style={styles.locationText}>Cape Town, Afrika</Text>
+            <View style={styles.tagsContainer}>
+              {profile.tags.map((item, index) => (
+                <Text key={index} style={styles.tagText}>{item}</Text>
+              ))}
+            </View>
           </View>
         </View>
+        <View style={styles.iconsContainer}>
+          <TouchableOpacity style={styles.iconButton}>
+            <Image source={profile.rejectIcon} style={styles.icon} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconButton}>
+            <Image source={profile.matchIcon} style={styles.icon} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconButton}>
+            <Image source={profile.staredIcon} style={styles.icon} />
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.iconsContainer}>
-        <TouchableOpacity style={styles.iconButton}>
-          <Image source={profile.rejectIcon} style={styles.icon} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton}>
-          <Image source={profile.matchIcon} style={styles.icon} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton}>
-          <Image source={profile.staredIcon} style={styles.icon} />
-        </TouchableOpacity>
-      </View>
-    </View>
     </View >
   )
 }

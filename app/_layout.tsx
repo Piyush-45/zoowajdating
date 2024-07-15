@@ -8,7 +8,10 @@ import { Image, TouchableOpacity } from 'react-native';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 import backButton from "../assets/images/backarrow.png";
+import {GestureHandlerRootView} from "react-native-gesture-handler"
+
 import { Customback } from './(tabs)/matches';
+import AuthProvider from './providers/AuthProvider';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -39,7 +42,8 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+  <GestureHandlerRootView>
+      <AuthProvider>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name='signup' options={{ headerShown: false }} />
@@ -108,10 +112,11 @@ export default function RootLayout() {
             headerLeft: () => <CustomBackButton />
           }}
         />
-        <Stack.Screen name='notificationscreen' options={{headerTitle:'Notification', headerTitleAlign:'center', headerLeft:()=><Customback/>}}/>
-        <Stack.Screen name='(tabs)' options={{headerShown:false}}/>
+        <Stack.Screen name='notificationscreen' options={{ headerTitle: 'Notification', headerTitleAlign: 'center', headerLeft: () => <Customback /> }} />
+        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
 
       </Stack>
-    </>
+    </AuthProvider>
+  </GestureHandlerRootView>
   );
 }

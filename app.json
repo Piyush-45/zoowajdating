@@ -3,6 +3,7 @@
     "name": "zoowajn",
     "slug": "zoowajn",
     "version": "1.0.0",
+    
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -11,10 +12,8 @@
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#43CEBA",
-      "width":100,
-      "height":130
-
-
+      "width": 100,
+      "height": 130
     },
     "ios": {
       "supportsTablet": true
@@ -37,8 +36,8 @@
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
-      ]
-      
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

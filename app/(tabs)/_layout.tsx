@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, useRouter } from 'expo-router';
+import { Redirect, Tabs, useRouter } from 'expo-router';
 import { Image, TouchableOpacity, View } from 'react-native';
 
 // Import PNG images
@@ -10,6 +10,7 @@ import profileIcon from '../../assets/images/profile.png';
 
 import notificationIcon from "../../assets/images/notificationicon.png";
 import filterIcon from "../../assets/images/filtericon.png";
+import { useAuth } from '../providers/AuthProvider';
 
 const _layout = () => {
   const router = useRouter();
@@ -32,14 +33,14 @@ const _layout = () => {
           headerTitle: 'Discover',
           headerShadowVisible: false,
           tabBarIcon: ({ color, focused }) => (
-            <Image 
-              source={marriageIcon} 
-              style={{ 
-                width: 24, 
-                height: 24, 
+            <Image
+              source={marriageIcon}
+              style={{
+                width: 24,
+                height: 24,
                 objectFit: 'contain',
                 tintColor: focused ? '#43CEBA' : 'black'
-              }} 
+              }}
             />
           ),
           headerRight: () => (
@@ -58,13 +59,13 @@ const _layout = () => {
         name='matches'
         options={{
           tabBarIcon: ({ color, focused }) => (
-            <Image 
-              source={matchesIcon} 
-              style={{ 
-                width: 24, 
-                height: 24, 
+            <Image
+              source={matchesIcon}
+              style={{
+                width: 24,
+                height: 24,
                 tintColor: focused ? '#43CEBA' : 'black'
-              }} 
+              }}
             />
           ),
         }}
@@ -73,13 +74,13 @@ const _layout = () => {
         name='message'
         options={{
           tabBarIcon: ({ color, focused }) => (
-            <Image 
-              source={messageIcon} 
-              style={{ 
-                width: 24, 
-                height: 24, 
+            <Image
+              source={messageIcon}
+              style={{
+                width: 24,
+                height: 24,
                 tintColor: focused ? '#43CEBA' : 'black'
-              }} 
+              }}
             />
           ),
         }}
@@ -89,20 +90,20 @@ const _layout = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({ color, focused }) => (
-            <Image 
-              source={profileIcon} 
-              style={{ 
-                width: 24, 
-                height: 24, 
+            <Image
+              source={profileIcon}
+              style={{
+                width: 24,
+                height: 24,
                 tintColor: focused ? '#43CEBA' : 'black'
-              }} 
+              }}
             />
           ),
         }}
       />
       <Tabs.Screen name='profiledetail/[id]' options={{ href: null, headerShown: false }} />
-      <Tabs.Screen name='profile/[id]' options={{ href: null, headerShown: false }} />
-      <Tabs.Screen name='[profile]/page' options={{ href: null, headerShown: false }} />
+      {/* <Tabs.Screen name='profile/[id]' options={{ href: null, headerShown: false }} /> */}
+      {/* <Tabs.Screen name='[profile]/page' options={{ href: null, headerShown: false }} /> */}
     </Tabs>
   );
 };

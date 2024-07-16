@@ -161,7 +161,7 @@ const ProfileDetailsone = () => {
           </View>
         </Modal>
 
-        <TouchableOpacity style={{ width: 95, backgroundColor: '#43CEBA', display: 'flex', paddingVertical: 13, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32, borderRadius: 14, marginTop: 20, gap: 10, alignSelf: 'flex-end', marginRight: 16 }} onPress={() => router.push('profileDetailstwo',)} >
+        <TouchableOpacity style={{ width: 95, backgroundColor: '#43CEBA', display: 'flex', paddingVertical: 13, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32, borderRadius: 14, marginTop: 20, gap: 10, alignSelf: 'flex-end', marginRight: 16 }} onPress={() => router.push('(tabs)/message',)} >
           <Text style={{ fontWeight: 'semibold', fontSize: 14, color: 'white', }} >
             Next
           </Text>
